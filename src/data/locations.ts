@@ -32,7 +32,7 @@ export const locations: Location[] = [
   {
     id: '3',
     name: '法喜寺',
-    image: 'https://images.unsplash.com/photo-1548257988-034957c6856d?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1546434596-bf89e6e9c80e?w=800&h=600&fit=crop',
     distance: '18km',
     travelTime: '40分钟',
     price: 10,

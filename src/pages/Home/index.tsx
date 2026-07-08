@@ -32,7 +32,7 @@ const getGreeting = () => {
 export const Home = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState('');
-  const [selectedEmotion, setSelectedEmotion] = useState<EmotionTag | null>(null);
+  const [selectedEmotions, setSelectedEmotions] = useState<EmotionTag[]>([]);
   const [showParams, setShowParams] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [quickParams, setQuickParams] = useState<QuickParam>({
@@ -43,8 +43,21 @@ export const Home = () => {
   });
 
   const handleEmotionClick = (tag: EmotionTag) => {
-    setSelectedEmotion(tag);
-    setInputValue(tag);
+    setSelectedEmotions((prev) => {
+      if (prev.includes(tag)) {
+        const newTags = prev.filter((t) => t !== tag);
+        if (newTags.length === 0) {
+          setInputValue('');
+        } else {
+          setInputValue(newTags.join('，'));
+        }
+        return newTags;
+      } else {
+        const newTags = [...prev, tag];
+        setInputValue(newTags.join('，'));
+        return newTags;
+      }
+    });
   };
 
   const handleSubmit = () => {
@@ -110,7 +123,7 @@ export const Home = () => {
               transition={{ delay: 0.5 + index * 0.05 }}
             >
               <Tag
-                selected={selectedEmotion === tag}
+                selected={selectedEmotions.includes(tag)}
                 onClick={() => handleEmotionClick(tag)}
               >
                 {tag}
