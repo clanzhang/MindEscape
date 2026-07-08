@@ -100,13 +100,6 @@ src/
 ```bash
 pnpm deploy
 ```
-
-### 自动部署
-
-项目已配置 GitHub Actions，push 到 `main` 分支时自动构建部署到 GitHub Pages。
-
-部署后访问：`https://clanzhang.github.io/MindEscape/`
-
 ## ⚠️ MVP 说明
 
 当前为 MVP 阶段，所有数据为本地 Mock，不包含以下功能：
